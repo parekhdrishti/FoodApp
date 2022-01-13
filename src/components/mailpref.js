@@ -3,18 +3,29 @@ import {View , Text , StyleSheet , FlatList} from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { RadioButton, Card } from 'react-native-paper';
 import {connect} from 'react-redux'
+import { add_user_data } from '../redux/action';
 
 
-export default class MailPref extends React.Component{
+class MailPref extends React.Component{
 
     flags = []
+
+    map_obj = {
+        true: [true, false],
+        false: [false, true] 
+    }
+
+    inverse_map_obj = (flags) => {
+        if(flags[0]) return true 
+        if(flags[1]) return false
+    }
 
     constructor(props){
         super(props)
     }
 
     state = {
-        selected: this.flags
+        selected: this.map_obj[this.props.user.user_data["emailPreference"]] || [true, false]
     }
 
     //for testing response prop
@@ -38,7 +49,7 @@ export default class MailPref extends React.Component{
     ]
 
     render(){
-        //console.log('SC')
+        // console.log(this.state)
         return(
             <View>
                 <Card style={styles.card}>
@@ -62,6 +73,9 @@ export default class MailPref extends React.Component{
                                                     flag_list[i] = false
                                                 }
                                             }
+                                            let obj_user = this.props.user.user_data
+                                            obj_user["emailPreference"] =  this.inverse_map_obj(flag_list)
+                                            this.props.add_user_data(obj_user)
                                             this.setState({selected:flag_list})
                                         }}/>
                                 </View>
@@ -75,7 +89,10 @@ export default class MailPref extends React.Component{
     }
 }
 
-
+const msp = state => ({
+    user: state.user 
+}) 
+export default connect(msp, {add_user_data: add_user_data})(MailPref)
 
 const styles = StyleSheet.create({
     card_title:{

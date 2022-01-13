@@ -11,16 +11,27 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.13",
+    "@react-native-community/clipboard": "^1.5.1",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
+    "@twotalltotems/react-native-otp-input": "^1.3.11",
+    "childprocess": "^2.0.2",
     "react": "17.0.2",
     "react-native": "0.66.3",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-paper": "^4.10.1",
+    "react-native-mail": "^6.1.1",
+    "react-native-modal": "^13.0.0",
+    "react-native-paper": "^4.6.0",
+    "react-native-ratings": "^8.1.0",
     "react-native-responsive-screen": "^1.4.2",
+    "react-native-restart": "^0.0.23",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
+    "react-native-table-component": "^1.2.1",
+    "react-native-toast-message": "^2.1.1",
     "react-native-vector-icons": "^9.0.0",
+    "react-native-webview": "^11.15.0",
+    "react-native-youtube-iframe": "^2.2.1",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
@@ -38,5 +49,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "browser": {
+    "child_process": false
   }
 }

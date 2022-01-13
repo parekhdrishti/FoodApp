@@ -5,12 +5,16 @@ import FoodPref from '../components/foodpref'
 import MailPref from '../components/mailpref.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Button} from 'react-native-paper'
+import {connect} from 'react-redux'
+import {update_user_redux_api_call} from './../redux/action'
 
-
-export default class Preference extends React.Component{
+class Preference extends React.Component{
     
     save_prefs = () => {
-
+        let token = this.props.user.token
+        let f = this.props.user.user_data["foodPreference"]
+        let e =this.props.user.user_data["emailPreference"]
+        this.props.update_user_redux_api_call(token, {foodPreference: f, emailPreference: e})
     }
 
     render(){
@@ -26,6 +30,12 @@ export default class Preference extends React.Component{
         )
     }
 }
+
+const msp = state => ({
+    user: state.user
+})
+
+export default connect(msp,{update_user_redux_api_call: update_user_redux_api_call})(Preference)
 
 const styles = StyleSheet.create({
     login_button:{

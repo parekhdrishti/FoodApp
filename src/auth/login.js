@@ -4,6 +4,7 @@ import {Button, TextInput, ActivityIndicator} from 'react-native-paper'
 import Header from './../components/header.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {connect} from 'react-redux'
+import {clear_user_data, login_redux_api_call, signup_bool } from '../redux/action.js';
 
 class Login extends React.Component{
     state = {
@@ -13,7 +14,9 @@ class Login extends React.Component{
         hidePassword: true,
         disableLogin:true,
         disableCLear:true,
-        error: ""
+        error: "",
+        ack: "",
+        rerender: true
     }
 
     clearDisableHandler = () => {
@@ -49,6 +52,7 @@ class Login extends React.Component{
             this.setState({error: "password must be atleast 8 characters long!"})
         }else{
             this.setState({error: ""})
+            this.props.login_redux_api_call(this.state.email, this.state.password)
         }
     }
 
@@ -65,10 +69,32 @@ class Login extends React.Component{
     }
 
     createAccountPress = () => {
+        this.props.clear_user_data({})
         this.props.navigation.navigate("Signup")
     }
 
+    static getDerivedStateFromProps(nextProps, prevState){
+        if(nextProps.user.login !== undefined){
+            if(nextProps.user.login.bool){
+                nextProps.navigation.navigate('BottomNavParent')
+            }else{
+                return {
+                    error: nextProps.user.login.error,
+                  }
+            }
+        }
+        return null
+    }
+
     render(){
+        if(this.props.user.signup !== undefined){
+            if(this.props.user.signup.bool === true){
+                if(this.state.rerender === true){ 
+                    this.setState({ack: "Signup Successful! Login now!"})
+                    this.setState({rerender: false})
+                }
+            }
+        }   
         return(
             <View>
                 <Header title="Login"/>
@@ -76,6 +102,12 @@ class Login extends React.Component{
                     <View style={styles.container}>
                         <TextInput label="Email" style={styles.input} theme={themes.email_theme} keyboardType="default" mode="outlined" value={this.state.email.trim()} onChangeText={this.getHandler('email')}/>
                         <TextInput label="Password" secureTextEntry={this.state.hidePassword} style={styles.input} theme={themes.password_theme} keyboardType="default" mode="outlined" value={this.state.password.trim()} onChangeText={this.getHandler('password')}/>
+                    </View>
+
+                    <View style={{alignItems: 'center'}}>
+                        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('PreOTP')}}>
+                            <Text style={{fontSize:15 , color:"#aeaeae"}}>FORGOT PASSWORD?</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.button_container}>
@@ -91,6 +123,14 @@ class Login extends React.Component{
                         <View></View>
                     )}
 
+                    {this.state.ack !== "" ? (
+                            <View style={styles.ack_container}>
+                                <Text style={styles.ack}>{this.state.ack}</Text>
+                            </View>
+                    ) : (
+                        <View></View>
+                    )}
+
                     <View style={{alignItems:'center' , marginTop:15}}>
                         <TouchableOpacity onPress={this.createAccountPress}>
                             <Text style={{fontSize:17 , color:"#7d0633"}}>CREATE ACCOUNT</Text>
@@ -98,28 +138,30 @@ class Login extends React.Component{
                         <Text style={{fontSize:12 , color:"#aeaeae"}}>(Don't have an account?)</Text>
                     </View>
                     
-                    {/* <View>
-                        <ActivityIndicator animating={this.props.log} color="#1e5f74" size="large" />
-                    </View> */}
+                    <View style={{marginTop: 20}}>
+                        <ActivityIndicator animating={this.props.api} color="#1e5f74" size="small" />
+                    </View>
+
                 </KeyboardAvoidingView>
             </View>
         )
     }
 }
 
-const mapStateToProps = state =>(
+const msp = state =>(
     {
-        
+        user: state.user,
+        api: state.api 
     }
 )
 
-export default connect(null, null)(Login)
+export default connect(msp, {clear_user_data: clear_user_data, signup_bool: signup_bool, login_redux_api_call:login_redux_api_call})(Login)
 
 //style OBJECTS
 const styles = StyleSheet.create({
     input:{
-        paddingHorizontal:wp('3%'),
-        paddingVertical:hp('2%')
+        marginHorizontal:wp('3%'),
+        marginVertical:hp('2%')
     },
     login_button:{
         marginHorizontal:wp('3%'),
@@ -133,7 +175,7 @@ const styles = StyleSheet.create({
         justifyContent:'center', 
         marginLeft:wp('12%'), 
         marginRight:wp('12%'), 
-        marginTop:hp('4%')
+        marginTop:hp('3%')
     },
     full_container:{
         flex:1,
@@ -148,6 +190,13 @@ const styles = StyleSheet.create({
     errors: {
         fontSize: 13,
         color: "#ff0000"
+    },
+    ack_container:{
+        alignItems: 'center'
+    },
+    ack: {
+        fontSize: 13,
+        color: "#0000ff"
     }
 })
 

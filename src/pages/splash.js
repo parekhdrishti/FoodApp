@@ -1,8 +1,8 @@
-import React, { Component } from 'react';  
-import { Platform, StyleSheet, View, Text, Image, TouchableOpacity, Alert } from 'react-native'; 
+import React from 'react';  
+import {StyleSheet, View, Text  } from 'react-native'; 
 import {connect} from 'react-redux'
-import Store from './../redux/store.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
+import { clear_user_data } from '../redux/action.js';
 
  class Splash extends React.Component{
    
@@ -10,19 +10,24 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
        isVisible : true
     }
     
-    Hide_Splash_Screen=()=>{  
-        //if(Store.getState().log){
-            //check user object and navigate to either seller / buyer or middleman
-          //  this.props.navigation.navigate('Seller')
-        //}else{
-            this.props.navigation.navigate('Login')
+    Hide_Splash_Screen=()=>{
+        if(this.props.user.login !== undefined){
+            if(this.props.user.login.bool){
+                this.props.navigation.navigate('BottomNavParent')
+            }else{
+                this.props.clear_user_data({})
+            }
+        }else{
+            this.props.clear_user_data({})
+        }
+        this.props.navigation.navigate('Login')
         //}    
     }
   
     componentDidMount(){  
         var that = this;  
         setTimeout(function(){  
-          that.Hide_Splash_Screen();  
+            that.Hide_Splash_Screen();  
         }, 2000);  
     }
 
@@ -32,8 +37,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
         return(
             <View style={styles.full_container}>
                 <View style={styles.inner_container}>
-                    <Text style={styles.cotton_text_2}>FOOD</Text>
-                    <Text style={styles.cotton_text_2}>APP</Text>
+                    <Text style={styles.cotton_text_2}>KITCHEN</Text>
+                    <Text style={styles.cotton_text_2}>GENIE</Text>
                 </View>
             </View>
         )
@@ -41,7 +46,11 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
     }
 }
 
-export default connect(null,{})(Splash)
+const msp = state => ({
+    user: state.user
+})
+
+export default connect(msp,{clear_user_data:clear_user_data})(Splash)
 
 const styles = StyleSheet.create({
     full_container : {
