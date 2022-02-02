@@ -1,5 +1,5 @@
 import React from 'react';  
-import {StyleSheet, View, Text  } from 'react-native'; 
+import {StyleSheet, View, Text, Image} from 'react-native'; 
 import {connect} from 'react-redux'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import { clear_user_data } from '../redux/action.js';
@@ -37,8 +37,7 @@ import { clear_user_data } from '../redux/action.js';
         return(
             <View style={styles.full_container}>
                 <View style={styles.inner_container}>
-                    <Text style={styles.cotton_text_2}>KITCHEN</Text>
-                    <Text style={styles.cotton_text_2}>GENIE</Text>
+                    <Image source = {require('./../images/logo.png')}/>
                 </View>
             </View>
         )
@@ -55,7 +54,7 @@ export default connect(msp,{clear_user_data:clear_user_data})(Splash)
 const styles = StyleSheet.create({
     full_container : {
         flex:1,
-        backgroundColor : "#1e5f74",
+        backgroundColor : "#fff",
         justifyContent: 'center',
         alignItems : 'center'
     },

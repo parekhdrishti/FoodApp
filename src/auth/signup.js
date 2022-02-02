@@ -5,6 +5,7 @@ import Header from './../components/header.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {connect} from 'react-redux'
 import { add_login_error, signup_redux_api_call } from '../redux/action.js';
+import colours from './../colours/colour'
 
 class Signup extends React.Component{
     state = {
@@ -116,7 +117,7 @@ class Signup extends React.Component{
 
                         <View style={{alignItems:'center' , marginTop:15}}>
                             <TouchableOpacity onPress={this.login_press}>
-                                <Text style={{fontSize:17 , color:"#7d0633"}}>LOGIN</Text>
+                                <Text style={{fontSize:17 , color:colours["col-3"]}}>LOGIN</Text>
                             </TouchableOpacity>
                             <Text style={{fontSize:12 , color:"#aeaeae"}}>(Already have an account?)</Text>
                         </View>
@@ -175,13 +176,13 @@ const styles = StyleSheet.create({
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    name_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    phone_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    password_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    name_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    phone_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
-    clear_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
+    clear_button_color:colours["col-5"],
 }

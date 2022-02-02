@@ -7,6 +7,7 @@ import { get_fav_api} from "../api/api";
 import {connect} from 'react-redux'
 import { api_bool } from "../redux/action";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import colours from './../colours/colour'
 
 class Favourites extends React.Component{
 
@@ -56,7 +57,32 @@ class Favourites extends React.Component{
         await this.get_recepes_inner_api(this.props.user.token)
     }
 
+    find_pref_count = () => {
+        let cnt = 0
+        for(let item of this.state.recipes){
+            if(this.props.user.user_data !== undefined){
+                if(this.props.user.user_data.foodPreference === "veg"){
+                    if(item.isVeg){
+                        cnt += 1
+                    }else{
+                        cnt = cnt
+                    }
+                }else if(this.props.user.user_data.foodPreference === "non-veg"){
+                    if(!item.isVeg){
+                        cnt += 1
+                    }else{
+                        cnt = cnt
+                    }
+                }else{
+                    cnt+=1
+                }
+            }
+        }
+        return cnt
+    }
+
     render(){
+        let cnt = this.find_pref_count()
         return(
             <View style={{flex: 1}}>
                 {this.props.api === true ? (
@@ -67,11 +93,11 @@ class Favourites extends React.Component{
                     </View>
                 ) : (    
                     <View style={{padding:5, flex: 1}}>
-                        {this.state.recipes.length === 0 ? (
+                        {cnt === 0 ? (
                             <View style={{justifyContent:'center', alignItems:'center', flex:1}}>
                                 <Text>No recipes are favourited</Text>
                                 <TouchableOpacity onPress={this.refresh_press}>
-                                    <Text style={{color:"#1e4f74", marginTop: 10}}>REFRESH</Text>
+                                    <Text style={{color:colours["col-5"], marginTop: 10}}>REFRESH</Text>
                                 </TouchableOpacity>
                             </View>
                         ):(

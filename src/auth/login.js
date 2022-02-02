@@ -5,6 +5,7 @@ import Header from './../components/header.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {connect} from 'react-redux'
 import {clear_user_data, login_redux_api_call, signup_bool } from '../redux/action.js';
+import colours from './../colours/colour'
 
 class Login extends React.Component{
     state = {
@@ -133,13 +134,13 @@ class Login extends React.Component{
 
                     <View style={{alignItems:'center' , marginTop:15}}>
                         <TouchableOpacity onPress={this.createAccountPress}>
-                            <Text style={{fontSize:17 , color:"#7d0633"}}>CREATE ACCOUNT</Text>
+                            <Text style={{fontSize:17 , color:colours["col-3"]}}>CREATE ACCOUNT</Text>
                         </TouchableOpacity>
                         <Text style={{fontSize:12 , color:"#aeaeae"}}>(Don't have an account?)</Text>
                     </View>
                     
                     <View style={{marginTop: 20}}>
-                        <ActivityIndicator animating={this.props.api} color="#1e5f74" size="small" />
+                        <ActivityIndicator animating={this.props.api} color={colours["col-5"]} size="small" />
                     </View>
 
                 </KeyboardAvoidingView>
@@ -196,16 +197,16 @@ const styles = StyleSheet.create({
     },
     ack: {
         fontSize: 13,
-        color: "#0000ff"
+        color: colours["col-4"]
     }
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    password_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
-    clear_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
+    clear_button_color:colours["col-5"],
 }

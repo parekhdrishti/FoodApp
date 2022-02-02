@@ -6,6 +6,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { signup_api, otp_api } from '../api/api';
 import {connect} from 'react-redux'
 import { api_bool } from '../redux/action';
+import colours from './../colours/colour'
+import Toast from 'react-native-toast-message';
 
 class PreOTP extends React.Component{
     state={
@@ -94,7 +96,7 @@ class PreOTP extends React.Component{
                         <View></View>
                     )}
                 <View style={{marginTop: 20}}>
-                    <ActivityIndicator animating={this.props.api} color="#1e5f74" size="small" />
+                    <ActivityIndicator animating={this.props.api} color={colours["col-5"]} size="small" />
                 </View>
             </View>
         )
@@ -143,11 +145,11 @@ const styles = StyleSheet.create({
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
     password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
     clear_button_color:"#1e4f74",
 }

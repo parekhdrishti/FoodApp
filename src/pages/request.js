@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {clear_user_data, login_redux_api_call, signup_bool } from '../redux/action.js';
 import { mail_api } from '../api/api.js';
 import Toast from 'react-native-toast-message';
+import colours from './../colours/colour'
 
 class RequestRecipe extends React.Component{
     state = {
@@ -157,11 +158,11 @@ const styles = StyleSheet.create({
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    password_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
-    clear_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
+    clear_button_color:colours["col-5"],
 }

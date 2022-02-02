@@ -6,6 +6,7 @@ import { toggle_rate } from "../redux/action";
 import { AirbnbRating } from 'react-native-ratings';
 import { rate_recipe_api } from "../api/api";
 import Toast from 'react-native-toast-message';
+import colours from './../colours/colour'
 
 class RatingShow extends React.Component{
 
@@ -52,7 +53,7 @@ class RatingShow extends React.Component{
         return(
             <View>
                 <AirbnbRating onFinishRating={this.ratingCompleted}/>
-                <Button style={{marginTop: 10}} color="#1e4f74" onPress={this.rate}>Rate</Button>
+                <Button style={{marginTop: 10}} color={colours["col-5"]} onPress={this.rate}>Rate</Button>
             </View>
         )
     }

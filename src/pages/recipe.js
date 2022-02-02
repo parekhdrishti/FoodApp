@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { api_bool, rate_id, toggle_rate } from '../redux/action';
 import { createIconSetFromFontello } from 'react-native-vector-icons';
 import { fav_recipe_api, unfav_recipe_api } from '../api/api';
+import colours from './../colours/colour'
 
 class Recipe extends React.Component{
 
@@ -155,28 +156,28 @@ class Recipe extends React.Component{
 
                 {this.state.chosen === "description" ? (
 
-                    <View style={{flexDirection: "row", justifyContent: "space-evenly", marginTop: 15, marginBottom: 5, borderBottomColor: "#7d0633", borderBottomWidth: 1, marginHorizontal: wp("1.5%"), borderTopRightRadius: 10}}>
+                    <View style={{flexDirection: "row", justifyContent: "space-evenly", marginTop: 15, marginBottom: 5, borderBottomColor: colours["col-5"], borderBottomWidth: 1, marginHorizontal: wp("1.5%"), borderTopRightRadius: 10}}>
                        
                         <View style={{width: wp("48.5%"), height: 30, backgroundColor:"#efefef", justifyContent: "center", borderTopLeftRadius: 10}}>
-                            <Text style={{fontSize:17, fontWeight:"500", color:"#7d0633", paddingLeft: 10}}>Description</Text>
+                            <Text style={{fontSize:17, fontWeight:"500", color:colours["col-5"], paddingLeft: 10}}>Description</Text>
                         </View>
                     
                         <TouchableOpacity onPress={()=>{if(this.state.chosen==="description"){this.setState({chosen: "ingredients"})}}}>
-                            <View style={{width: wp("48.5%"), height: 30, backgroundColor:"#7d0633", justifyContent: "center", borderTopRightRadius: 10}}>
+                            <View style={{width: wp("48.5%"), height: 30, backgroundColor:colours["col-5"], justifyContent: "center", borderTopRightRadius: 10}}>
                                 <Text style={{fontSize:17, fontWeight:"500", color:"#fff", paddingLeft: 5}}>Ingredients</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
                 ) : (
-                    <View style={{flexDirection: "row", justifyContent: "space-evenly", marginTop: 15, marginBottom: 5, borderBottomColor: "#7d0633", borderBottomWidth: 1, marginHorizontal: wp("1.5%"), borderTopRightRadius: 10}}>
+                    <View style={{flexDirection: "row", justifyContent: "space-evenly", marginTop: 15, marginBottom: 5, borderBottomColor: colours["col-5"], borderBottomWidth: 1, marginHorizontal: wp("1.5%"), borderTopRightRadius: 10}}>
                         <TouchableOpacity onPress={()=>{if(this.state.chosen==="ingredients"){this.setState({chosen: "description"})}}}>
-                            <View style={{width: wp("48.5%"), height: 30, justifyContent: "center", borderTopLeftRadius: 10, backgroundColor:"#7d0633"}}>
+                            <View style={{width: wp("48.5%"), height: 30, justifyContent: "center", borderTopLeftRadius: 10, backgroundColor:colours["col-5"]}}>
                                 <Text style={{fontSize:17, fontWeight:"500", color:"#fff", paddingLeft: 10}}>Description</Text>
                             </View>
                         </TouchableOpacity>
                         
                         <View style={{width: wp("48.5%"), height: 30, backgroundColor:"#efefef", justifyContent: "center", borderTopRightRadius: 10}}>
-                            <Text style={{fontSize:17, fontWeight:"500", color:"#7d0633", paddingLeft: 5}}>Ingredients</Text>
+                            <Text style={{fontSize:17, fontWeight:"500", color:colours["col-5"], paddingLeft: 5}}>Ingredients</Text>
                         </View>
                     </View>
                 )}

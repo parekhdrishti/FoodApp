@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {Appbar} from 'react-native-paper'
 import { heightPercentageToDP } from 'react-native-responsive-screen'
+import colours from './../colours/colour'
 
 export default Header = props => {
     //console.log(props)
@@ -44,7 +45,7 @@ export default Header = props => {
 }
 
 const colors = {
-    header_background:"#1e4f74",
+    header_background:colours["col-5"],
 }
 
 const icons = {

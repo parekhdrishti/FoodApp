@@ -4,6 +4,7 @@ import OTPInputView from '@twotalltotems/react-native-otp-input'
 import Header from '../components/header'
 import { otp_api } from '../api/api'
 import Toast from 'react-native-toast-message';
+import colours from './../colours/colour'
 
 export default class OTP extends React.Component{
     state = {
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     },
    
     underlineStyleBase: {
-      color: "#7d0633",
+      color: colours["col-3"],
       borderColor: "#131313"
     },
    

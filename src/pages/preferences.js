@@ -7,6 +7,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import {Button} from 'react-native-paper'
 import {connect} from 'react-redux'
 import {update_user_redux_api_call} from './../redux/action'
+import colours from './../colours/colour'
 
 class Preference extends React.Component{
     
@@ -46,5 +47,5 @@ const styles = StyleSheet.create({
 })
 
 const colors = {
-    login_button_color:"#1e4f74",
+    login_button_color:colours["col-5"]
 }

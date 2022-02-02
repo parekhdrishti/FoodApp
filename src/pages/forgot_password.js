@@ -6,6 +6,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { signup_api, otp_api, update_user_api } from '../api/api';
 import {connect} from 'react-redux'
 import { api_bool } from '../redux/action';
+import colours from './../colours/colour'
 
 class ForgotPassword extends React.Component{
     state={
@@ -126,11 +127,11 @@ const styles = StyleSheet.create({
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    password_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
-    clear_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
+    clear_button_color:colours["col-5"],
 }

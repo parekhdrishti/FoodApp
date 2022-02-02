@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import {clear_user_data, delete_user_redux_api_call, update_user_redux_api_call} from './../redux/action'
 import RNRestart from 'react-native-restart'
 import Toast from 'react-native-toast-message';
+import colours from './../colours/colour'
 
 class Settings extends React.Component{
     constructor(props){
@@ -122,13 +123,13 @@ class Settings extends React.Component{
 
                         <View style={{alignItems:'center' , marginTop:15}}>
                             <TouchableOpacity onPress={this.preference_press}>
-                                <Text style={{fontSize:17 , color:"#7d0633"}}>CHANGE PREFERENCES</Text>
+                                <Text style={{fontSize:17 , color:colours["col-3"]}}>CHANGE PREFERENCES</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View style={{alignItems:'center' , marginTop:15}}>
                             <TouchableOpacity onPress={this.request_press}>
-                                <Text style={{fontSize:17 , color:"#7d0633"}}>REQUEST RECIPE</Text>
+                                <Text style={{fontSize:17 , color:colours["col-3"]}}>REQUEST RECIPE</Text>
                             </TouchableOpacity>
                         </View>
                         
@@ -189,13 +190,13 @@ const styles = StyleSheet.create({
 })
 
 const themes = {
-    email_theme: { colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    password_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    name_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
-    phone_theme:{ colors: { primary: '#1e5f74',underlineColor:'transparent',}},
+    email_theme: { colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    password_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    name_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
+    phone_theme:{ colors: { primary: colours["col-5"],underlineColor:'transparent',}},
 }
 
 const colors = {
-    login_button_color:"#1e4f74",
-    clear_button_color:"#1e4f74",
+    login_button_color:colours["col-5"],
+    clear_button_color:colours["col-5"],
 }
