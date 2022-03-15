@@ -127,19 +127,19 @@ class Recipe extends React.Component{
 
                 <View style={{flexDirection: "row", marginHorizontal: 10, marginTop: 10, justifyContent: "space-between"}}>
                     <TouchableOpacity onPress={()=>{this.props.toggle_rate(true); this.props.add_rate_id(obj._id)}}>
-                        <Text style={{color: "#1e4f74"}}>RATE</Text>
+                        <Text style={{color: colours["col-1"]}}>RATE</Text>
                     </TouchableOpacity>
 
                     {this.props.api ? (
-                        <ActivityIndicator animating={this.props.api} color="#1e5f74" size="small" />
+                        <ActivityIndicator animating={this.props.api} color={colours["col-1"]} size="small" />
                     ):(
                         this.state.fav? (
                             <TouchableOpacity onPress={this.unfavourite_press}>
-                                <Text style={{color: "#1e4f74"}}>REMOVE FROM FAVOURITES</Text>
+                                <Text style={{color: colours["col-1"]}}>REMOVE FROM FAVOURITES</Text>
                             </TouchableOpacity>
                         ):(
                             <TouchableOpacity onPress={this.favourite_press}>
-                                <Text style={{color: "#1e4f74"}}>ADD TO FAVOURITES</Text>
+                                <Text style={{color: colours["col-1"]}}>ADD TO FAVOURITES</Text>
                             </TouchableOpacity>
                         )
                     )}

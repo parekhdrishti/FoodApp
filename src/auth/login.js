@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {View, StyleSheet, KeyboardAvoidingView, Text, TouchableOpacity} from 'react-native'
+import {View, StyleSheet, KeyboardAvoidingView, Text, TouchableOpacity, Image} from 'react-native'
 import {Button, TextInput, ActivityIndicator} from 'react-native-paper'
 import Header from './../components/header.js'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -97,7 +97,7 @@ class Login extends React.Component{
             }
         }   
         return(
-            <View>
+            <View style={{flex:1}}>
                 <Header title="Login"/>
                 <KeyboardAvoidingView style={styles.center_data}>
                     <View style={styles.container}>
@@ -142,8 +142,18 @@ class Login extends React.Component{
                     <View style={{marginTop: 20}}>
                         <ActivityIndicator animating={this.props.api} color={colours["col-5"]} size="small" />
                     </View>
-
                 </KeyboardAvoidingView>
+
+                <View style={{justifyContent:"flex-end", flex:1}}>
+                    <Image
+                        source = {require('./../images/bck.png')}
+                        style={{
+                            height: hp("16%"),
+                            width: wp("100%"),
+                        }}
+                        resizeMode="stretch"
+                    />
+                </View>
             </View>
         )
     }

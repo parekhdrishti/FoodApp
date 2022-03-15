@@ -100,7 +100,7 @@ class Settings extends React.Component{
 
     render(){
         return(
-            <View>
+            <View style={{}}>
                 <ScrollView>
                         <View style={styles.container}>
                             <TextInput label="Name" style={styles.input} theme={themes.name_theme} keyboardType="default" mode="outlined" value={this.state.name.trim()} onChangeText={this.getHandler('name')}/>
@@ -123,13 +123,13 @@ class Settings extends React.Component{
 
                         <View style={{alignItems:'center' , marginTop:15}}>
                             <TouchableOpacity onPress={this.preference_press}>
-                                <Text style={{fontSize:17 , color:colours["col-3"]}}>CHANGE PREFERENCES</Text>
+                                <Text style={{fontSize:17 , color:colours["black"]}}>CHANGE PREFERENCES</Text>
                             </TouchableOpacity>
                         </View>
 
                         <View style={{alignItems:'center' , marginTop:15}}>
                             <TouchableOpacity onPress={this.request_press}>
-                                <Text style={{fontSize:17 , color:colours["col-3"]}}>REQUEST RECIPE</Text>
+                                <Text style={{fontSize:17 , color:colours["black"]}}>REQUEST RECIPE</Text>
                             </TouchableOpacity>
                         </View>
                         

@@ -28,20 +28,28 @@ import { clear_user_data } from '../redux/action.js';
         var that = this;  
         setTimeout(function(){  
             that.Hide_Splash_Screen();  
-        }, 2000);  
+        }, 1000);
     }
 
-    render()  
-    {  
-        //let image = require('./../images/Cotton_splash.png')
+    render()
+    {
         return(
             <View style={styles.full_container}>
                 <View style={styles.inner_container}>
                     <Image source = {require('./../images/logo.png')}/>
                 </View>
+                <View style={{justifyContent:"flex-end", flex:1}}>
+                    <Image 
+                        source = {require('./../images/bck.png')} 
+                        style={{
+                            height: hp("16%"),
+                            width: wp("100%"),
+                        }}
+                        resizeMode="stretch"
+                    />
+                </View>
             </View>
         )
-          
     }
 }
 
@@ -56,11 +64,13 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor : "#fff",
         justifyContent: 'center',
-        alignItems : 'center'
+        alignItems : 'center',
+        height: hp("100%")
     },
     inner_container : {
-        justifyContent: 'center',
-        alignItems : 'center'
+        justifyContent: 'flex-end',
+        alignItems : 'center',
+        flex:1
     },
     image: {
         alignSelf: 'center',

@@ -1,4 +1,4 @@
-let url = "https://9db0-2405-201-17-f10d-2a-1575-4bc6-86a0.ngrok.io/"
+let url = "https://kitchengenie.herokuapp.com/"
 
 let signup_url = url+"signup/"
 let login_url = url + "login/"
