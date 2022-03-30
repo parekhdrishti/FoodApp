@@ -35,6 +35,16 @@ import { clear_user_data } from '../redux/action.js';
     {
         return(
             <View style={styles.full_container}>
+                <View style={{justifyContent:"flex-start" , flex:1}}>
+                    <Image 
+                        source = {require('./../images/bck.png')} 
+                        style={{
+                            height: hp("16%"),
+                            width: wp("100%"),
+                        }}
+                        resizeMode="stretch"
+                    />
+                </View>
                 <View style={styles.inner_container}>
                     <Image source = {require('./../images/logo.png')}/>
                 </View>
@@ -68,7 +78,7 @@ const styles = StyleSheet.create({
         height: hp("100%")
     },
     inner_container : {
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         alignItems : 'center',
         flex:1
     },

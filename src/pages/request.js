@@ -94,6 +94,8 @@ class RequestRecipe extends React.Component{
                     </View>
 
                 </KeyboardAvoidingView>
+
+                <Text style={{margin:10, alignSelf:'center'}} >Care For Your Cravings</Text>
             </View>
         )
     }

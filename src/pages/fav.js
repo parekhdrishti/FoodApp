@@ -147,6 +147,7 @@ class Favourites extends React.Component{
                         }
                     </View>
                 )}
+                <Text style={{margin:10, alignSelf:'center'}}>Beyond The Boundaries Of Taste</Text>
             </View>
         )
     }
